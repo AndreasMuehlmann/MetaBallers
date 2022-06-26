@@ -1,22 +1,8 @@
-#include <iostream>
-#include "SDL.h"
- 
-// Unbedingt mit argc und argv, da es sonst
-// mit MinGW wahrscheinlich nicht kompiliert.
-int main( int argc, char **argv )
-{
-  // Video und Timersubsystem initialisieren
-  if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_TIMER ) )
-  {
-    // Irgendwas ist schiefgegangen. SDL_GetError weiß mehr
-    std::cerr << "Konnte SDL nicht initialisieren: " << SDL_GetError() << std::endl;
-    return 1;
-  }
- 
-  // SDL_Quit registrieren
-  atexit(&SDL_Quit);
- 
-  std::cout << "Dieses Mal ein freudiges Hello SDL!" << std::endl;
- 
-  return 0;
+#include <SDL.h>
+
+int main() {
+    SDL_Init(SDL_INIT_VIDEO);
+    SDL_Window *win = SDL_CreateWindow("Hello World!", 100, 100, 300, 300, SDL_WINDOW_SHOWN);
+    SDL_Delay(5000);
+    return 0;
 }
