@@ -1,5 +1,5 @@
 #include <iostream>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 
 const int WIDTH = 800, HEIGHT = 600;
 
@@ -17,7 +17,7 @@ int main(int argc, char *argv[]) {
     SDL_Event *event;
 
     while (true) {
-        if (SDL_PollEvent(event)) {
+        if(SDL_PollEvent(event)) {
             if(SDL_QUIT == event->type) {
                 break;
             }

@@ -1,5 +1,5 @@
 run:		App.exe
-	.\App.exe
+	./bin/App.exe
 
-App.exe:	App.cpp
-	g++ -I src/include -L src/lib -o App App.cpp -lmingw32 -lSDL2main -lSDL2
+App.exe:	src/*.cpp
+	g++ -I include -I include/sdl2 -I include/headers -L lib -o bin/App src/*.cpp -lmingw32 -lSDL2main -lSDL2
