@@ -1,5 +1,5 @@
-run:		App.exe
-	./bin/App.exe
+run:		Metaballers
+	./bin/Metaballers
 
-App.exe:	src/*.cpp
-	g++ -I include -I include/sdl2 -I include/headers -L lib -o bin/App src/*.cpp -lmingw32 -lSDL2main -lSDL2
+Metaballers:	src/*.cpp
+	g++ -o bin/Metaballers src/*.cpp -lSDL2
