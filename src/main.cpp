@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-#include <SDL2/SDL.h>K
+#include <SDL2/SDL.h>
 
 
 const int WIDTH = 1000, HEIGHT = 800;

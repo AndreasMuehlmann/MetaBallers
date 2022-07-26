@@ -1,4 +1,4 @@
-run:	MetaBallers.exe
+run:		MetaBallers.exe
 	./bin/MetaBallers.exe
 
 MetaBallers.exe:	src/*.cpp
