@@ -15,21 +15,21 @@ Clone the repository with "git clone https://github.com/AndreasMuehlmann/MetaBal
 # EXECUTING
 
 Recompile & Run:
-```
+```sh
 $ make
 ```
 or
-```
+```sh
 $ make run
 ```
 
 Only Compile:
-```
+```sh
 $ make MetaBallers
 ```
 
 Only Run:
-```
+```sh
 $ bin/MetaBallers
 ```
 
@@ -37,6 +37,6 @@ $ bin/MetaBallers
 # SDL2
 
 Install on Arch:
-```
+```sh
 $ sudo pacman -Sy sdl2
 ```
