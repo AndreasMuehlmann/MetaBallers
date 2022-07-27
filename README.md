@@ -14,7 +14,7 @@ Clone the repository with "git clone https://github.com/AndreasMuehlmann/MetaBal
 
 # EXECUTING
 
-Recompile & Run:
+- Recompile & Run:
 ```sh
 $ make
 ```
@@ -23,12 +23,12 @@ or
 $ make run
 ```
 
-Only Compile:
+- Only Compile:
 ```sh
 $ make MetaBallers
 ```
 
-Only Run:
+- Only Run:
 ```sh
 $ bin/MetaBallers
 ```
@@ -36,7 +36,7 @@ $ bin/MetaBallers
 
 # SDL2
 
-Install on Arch:
+- Install on Arch:
 ```sh
 $ sudo pacman -Sy sdl2
 ```
