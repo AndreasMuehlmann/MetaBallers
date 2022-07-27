@@ -5,7 +5,8 @@ using namespace std;
 
 
 const int WIDTH = 1000, HEIGHT = 800;
-
+const int BORDER_WIDTH = 100;
+bool print = true;
 
 int main() {
     SDL_Init(SDL_INIT_VIDEO);
@@ -24,9 +25,23 @@ int main() {
     SDL_Event *event;
 
     while (true) {
+	
+	for (int i = 0; i < WIDTH * HEIGHT; i++) {
+		
+		int x = i % WIDTH;
+		int y = (i - x) / WIDTH;
+
+		// Drawing the Border
+		if (y < BORDER_WIDTH || y > HEIGHT - BORDER_WIDTH || x < BORDER_WIDTH || x > WIDTH - BORDER_WIDTH) {
+				pixels[i] = 255;
+		}
+
+			
+		
+	}
+
         SDL_UpdateTexture(texture, NULL, pixels, WIDTH * sizeof(Uint32));
 
-        //FIXME: there is probably a better way of doing this
         if(SDL_PollEvent(event)) {
             if(SDL_QUIT == event->type) {
                 break;
