@@ -2,4 +2,4 @@ run:		MetaBallers
 	./bin/MetaBallers
 
 MetaBallers:	src/*.cpp
-	g++ -o bin/MetaBallers src/*.cpp -lSDL2
+	g++ -Iheaders -o bin/MetaBallers src/*.cpp -lSDL2
