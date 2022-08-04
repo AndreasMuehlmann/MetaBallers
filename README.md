@@ -2,6 +2,46 @@
 A Project in wich we make a meta ball simulation.
 How it could look: "https://github.com/AndreasMuehlmann/MetaBallers/files/8873628/Metaballs.Draw.1.pdf".
 
+## Theory
+
+The balls are just saved as points representing their centers.
+Then for each pixel, the distance to all ball centers will be calculated and summed up (The closer the higher the value).
+When the pixel's vaue is bigger than a certain threshold then it will be drawn.
+Whenever possible it should be worked with relative numbers to keep it flexible.
+
+## Distance Calculation
+
+First the distance for each pixel to each ball is calculated.
+
+```python
+distanceToBall = |(x, y) - (ball.x, ball,y)|
+```
+
+## Value Calculation
+
+The resulting value is smaller the closer the pixle is to a ball, so it must be reversed.
+The largest distance is from one corner to it's diagonal corner, so this will be the maximum distance.
+Then this can be converted to a number between 1 and 0. 1 being on the center of the ball, 0 being the maximum distance away.
+
+```python
+maximumDistance = |(SCREEN_WIDTH, SCREEN_HEIGHT)|
+reversedDistance = maximumDistance - distanceToBall
+valuePerBall = reversedDistance / maximumDistance
+```
+
+Then all the values for the Different balls will be added together.
+!!! The value is only between 0 and 1 regarding only one ball.
+
+## Threshold
+
+The value of the threshold can be seen as a percentage of the maximum distance.
+Hence it should be between 0 and 1.
+
+# Future Features
+
+- Different Color for each ball.
+- Different weight (= radius) for each ball.
+- Other renderer (e.g. Console)
 
 # QUICKSTART
 
@@ -38,5 +78,5 @@ $ bin/MetaBallers
 
 - Install on Arch:
 ```sh
-$ sudo pacman -Sy sdl2
+$ sudo pacman -S sdl2
 ```
