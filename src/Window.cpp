@@ -15,17 +15,19 @@ const int BORDER_WIDTH = 100;
 int WIDTH, HEIGHT;
 int SIZE;
 
+bool(*m_draw)(int x, int y);
+
 SDL_Window *window;
 SDL_Renderer *renderer;
 SDL_Texture *texture; 
 
 Uint32 *pixels;
 
-void initWindow(int width, int height) {
+void initWindow(int width, int height, bool(*draw)(int x, int y)) {
 	WIDTH = width;
 	HEIGHT = height;
 	SIZE = WIDTH * HEIGHT;
-
+	m_draw = draw;
 
     SDL_Init(SDL_INIT_VIDEO);
 
@@ -46,26 +48,15 @@ void loop() {
 			
 			int x = i % WIDTH;
 			int y = (i - x) / WIDTH;
-		
-			// Drawing the Border
-			if (y < BORDER_WIDTH || y > HEIGHT - BORDER_WIDTH || x < BORDER_WIDTH || x > WIDTH - BORDER_WIDTH) {
-					pixels[i] = 255;
-			}	
 			
+			pixels[i] = m_draw(x, y) * 255;
+
 		}
         SDL_UpdateTexture(texture, NULL, pixels, WIDTH * sizeof(Uint32));
 
-
-		PRINTL("#2");
-
         if(SDL_PollEvent(&event)) {
-
-		PRINTL("#3");
-
             if(SDL_QUIT == event.type) {
-
-		PRINTL("#4");
-
+				PRINTL("Quitting SDL2");
                 break;
             }
         }
@@ -87,6 +78,6 @@ void closeWindow() {
 	
 }
 
-void addDrawMethod() {
-
+void setDrawMethod(bool(*draw)(int x, int y)) {
+	m_draw = draw;
 }
