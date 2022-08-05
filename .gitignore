@@ -1,3 +1,5 @@
 session.vim
 .ccls
 .ccls-cache/
+bin/
+.gitignore
