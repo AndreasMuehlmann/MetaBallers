@@ -6,15 +6,16 @@ using namespace std;
 class MovingPoint {
 
 private:
-  vector<float> pos;
-  vector<float> space;
-  vector<float> vel;
+  vector<int> pos;
+  vector<int> space;
+  vector<int> vel;
   int dimensions;
 
   bool isDimensionColliding(int dimension);
   void reverseVel(int dimension);
 
 public:
-  MovingPoint(vector<float> space, vector<float> pos, vector<float> vel);
+  MovingPoint(vector<int> space, vector<int> pos, vector<int> vel);
   void move();
+  vector<int> getPos();
 };

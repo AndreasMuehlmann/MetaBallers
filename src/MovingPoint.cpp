@@ -4,8 +4,7 @@ using namespace std;
 
 #include "MovingPoint.h"
 
-MovingPoint::MovingPoint(vector<float> space, vector<float> pos,
-                         vector<float> vel) {
+MovingPoint::MovingPoint(vector<int> space, vector<int> pos, vector<int> vel) {
   this->space = space;
   this->pos = pos;
   this->vel = vel;
@@ -34,3 +33,5 @@ bool MovingPoint::isDimensionColliding(int dimension) {
 void MovingPoint::reverseVel(int dimension) {
   vel[dimension] = vel[dimension] * -1;
 }
+
+vector<int> MovingPoint::getPos() { return pos; }

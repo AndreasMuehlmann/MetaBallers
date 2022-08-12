@@ -7,11 +7,13 @@ using namespace std;
 
 class MetaBallManager {
 private:
-  vector<float> space;
+  float threshold;
+  vector<int> space;
   vector<MovingPoint *> metaBallCenters;
+  bool isInMetaBall(int x, int y);
 
 public:
-  MetaBallManager(vector<float> space, int metaBallCount);
+  MetaBallManager(vector<int> space, int metaBallCount);
   void update();
-  vector<vector<int>> giveState();
+  vector<vector<bool>> getGrid();
 };
