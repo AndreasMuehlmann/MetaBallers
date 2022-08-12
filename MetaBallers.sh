@@ -1,3 +1,6 @@
+Run it with chmod +x MetaBallers.sh
+./MetaBallers
+
 echo "ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ"
 echo "|                                                                |"
 echo "|                                                                |"
