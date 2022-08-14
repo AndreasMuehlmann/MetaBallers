@@ -1,3 +1,5 @@
+using namespace std;
+
 #include <iostream>
 #include <SDL2/SDL.h>
 #include <list>
@@ -5,25 +7,20 @@
 
 #include "Window.h"
 
-using namespace std;
-
 const int BORDER_WIDTH = 100;
 
 int WIDTH, HEIGHT;
 int SIZE;
-
-bool(*m_draw)(int x, int y);
 
 SDL_Window *window;
 SDL_Renderer *renderer;
 
 Uint32 *pixels;
 
-void initWindow(int width, int height, bool(*draw)(int x, int y)) {
+void initWindow(int width, int height) {
 	WIDTH = width;
 	HEIGHT = height;
 	SIZE = WIDTH * HEIGHT;
-	m_draw = draw;
 
     SDL_Init(SDL_INIT_VIDEO);
 
@@ -31,33 +28,30 @@ void initWindow(int width, int height, bool(*draw)(int x, int y)) {
     renderer = SDL_CreateRenderer(window, -1, 0);
 }
 
-void loop() {
+// call once per frame
+void update() {
+
+    SDL_RenderPresent(renderer);
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 
 	SDL_Event event;
-    while (true) {
-      
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-        SDL_RenderClear(renderer);
-	    SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-
-		// Looping through every pixel
-		for (int x = 0; x < WIDTH; x++) {
-			for (int y = 0; y < HEIGHT; y++) {
-				if(m_draw(x, y) == 1) {
-					SDL_RenderDrawPoint(renderer, x, y);
-				}
-			}
-		}
-
-        if(SDL_PollEvent(&event)) {
-            if(SDL_QUIT == event.type) {
-                break;
-            }
+    if(SDL_PollEvent(&event)) {
+        if(SDL_QUIT == event.type) {
+          closeWindow();
+		  exit(0);
         }
-		
-        SDL_RenderPresent(renderer);
     }
+}
 
+void drawGrid(vector<vector<bool>> grid) {
+	for (int y = 0; y < grid.size(); y++) {
+		for (int x = 0; x < grid[0].size(); x++) {
+			if(grid[y][x] == 1)
+				SDL_RenderDrawPoint(renderer, x, y);
+		}
+	}
 }
 
 void closeWindow() {
@@ -66,8 +60,4 @@ void closeWindow() {
     SDL_DestroyWindow(window);
     SDL_Quit();
 	
-}
-
-void setDrawMethod(bool(*draw)(int x, int y)) {
-	m_draw = draw;
 }

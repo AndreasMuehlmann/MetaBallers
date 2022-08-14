@@ -1,9 +1,12 @@
 #pragma once
+using namespace std;
 
+#include <vector>
 
-#define PRINTL(x) cout << x << endl
-#define PRINT(x) cout << x
+#define PRINTL(x) std::cout << x << std::endl
+#define PRINT(x) std::cout << x
 
-void initWindow(int width, int height, bool(*draw)(int x, int y));
-void loop();
+void initWindow(int width, int height);
+void update();
+void drawGrid(vector<vector<bool>> grid);
 void closeWindow();

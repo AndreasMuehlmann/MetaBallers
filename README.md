@@ -7,7 +7,6 @@ How it could look: "https://github.com/AndreasMuehlmann/MetaBallers/files/887362
 The balls are just saved as points representing their centers.
 Then for each pixel, the distance to all ball centers will be calculated and summed up (The closer the higher the value).
 When the pixel's vaue is bigger than a certain threshold it will be drawn.
-Whenever possible it should be worked with relative numbers to keep it flexible.
 
 ## Distance Calculation
 
