@@ -41,7 +41,6 @@ Hence it should be between 0 and 1.
 
 - Different Color for each ball.
 - Different weight (= radius) for each ball.
-- Other renderer (e.g. Console)
 
 # QUICKSTART
 
@@ -73,6 +72,12 @@ $ make MetaBallers
 $ bin/MetaBallers
 ```
 
+- Switch between Console and Gui:
+Go into main.cpp and comment out the following line:
+```cpp
+7 // Comment out the following line for the Console Version
+8 #define gui
+```
 
 # SDL2
 
