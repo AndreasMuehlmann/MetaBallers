@@ -4,7 +4,6 @@
 using namespace std;
 
 #include <vector>
-using namespace std;
 
 #include "MetaBallManager.h"
 #include "MovingPoint.h"
